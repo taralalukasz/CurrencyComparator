@@ -45,10 +45,33 @@ import java.nio.charset.Charset;
 
         xmlfile = xmlfile.replace("><", ">\n<");
 
-
-
         return xmlfile;
     }
+
+        public static String modifyJsonToXml (JSONObject json1, JSONObject json2) throws JSONException {
+            StringBuilder sb = new StringBuilder();
+            sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+            sb.append("\n");
+            sb.append("<?xml-stylesheet type=\"text/xsl\" version=\"1.0\" href=\"transform.xsl\"?>");
+            sb.append("\n");
+            sb.append("<comparator>");
+            sb.append("<currencies>");
+            sb.append("\n");
+            sb.append(XML.toString(json1));
+            sb.append("\n");
+            sb.append("</currencies>");
+            sb.append("<currencies>");
+            sb.append("\n");
+            sb.append(XML.toString(json2));
+            sb.append("\n");
+            sb.append("</currencies>");
+            sb.append("</comparator>");
+            String xmlfile = sb.toString();
+
+            xmlfile = xmlfile.replace("><", ">\n<");
+
+            return xmlfile;
+        }
 
     private static String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();

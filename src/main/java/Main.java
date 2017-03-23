@@ -18,12 +18,12 @@ public class Main {
             //test zaczytania xml
             readXml(URL);
             //test jsona
-            JSONObject json = readJsonFromUrl("http://api.fixer.io/latest?base=EUR");
-            System.out.println(json.toString());
+            JSONObject json1 = readJsonFromUrl("http://api.fixer.io/latest?base=EUR");
+            JSONObject json2 = readJsonFromUrl("http://api.fixer.io/2009-05-12?base=PLN");
             //test parsa jsona do xml
 
             System.out.println("\n");
-            reposnseString = modifyJsonToXml(json);
+            reposnseString = modifyJsonToXml(json1, json2);
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
         }
