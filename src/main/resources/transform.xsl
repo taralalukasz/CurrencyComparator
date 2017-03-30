@@ -87,6 +87,12 @@
                                     <td><xsl:value-of select="rates/SEK"/></td>
                                     <td>SEK</td>
                                 </tr>
+
+                                <tr>
+                                    <td>Russian Rubel</td>
+                                    <td><xsl:value-of select="rates/RUB"/></td>
+                                    <td>RUB</td>
+                                </tr>
                             </table>
                         </div>
                      </xsl:for-each>
