@@ -1,4 +1,4 @@
-package componentBuilder;
+package components;
 
 import main.Main;
 
@@ -20,7 +20,7 @@ public class ComponentBuilder {
 
     private Main frame;
 
-    public void addCheckBox(String boxValue, int gridx, int gridy) {
+    public JCheckBox addCheckBox(String boxValue, int gridx, int gridy) {
         GridBagConstraints c = new GridBagConstraints(); //ograniczenia guzikow
 
         c.gridx = gridx;
@@ -28,6 +28,8 @@ public class ComponentBuilder {
 
         JCheckBox checkBox = new JCheckBox(boxValue);
         frame.add(checkBox, c);
+
+        return checkBox;
     }
 
     public void addComboBox(int gridx, int gridy) {
@@ -84,7 +86,7 @@ public class ComponentBuilder {
         frame.add(label, c);
     }
 
-    public void addMaskedField(int gridx, int gridy) {
+    public JFormattedTextField addMaskedField(int gridx, int gridy) {
         GridBagConstraints c = new GridBagConstraints(); //ograniczenia guzikow
 
         c.gridx = gridx;
@@ -92,10 +94,10 @@ public class ComponentBuilder {
         //field with data
         JPanel datePanel = new JPanel(new BorderLayout()); //stworzenie panelu
         MaskFormatter format;
-
+        JFormattedTextField dateTextField = null;
         try {
             format = new MaskFormatter("####-##-##");
-            JFormattedTextField dateTextField = new JFormattedTextField(format);  //textfield z formatem daty
+            dateTextField = new JFormattedTextField(format);  //textfield z formatem daty
             datePanel.add(dateTextField);  //dodanie textfieldu z formatem do date panelu
             datePanel.setPreferredSize(new Dimension(70, 20));
 
@@ -103,6 +105,8 @@ public class ComponentBuilder {
         } catch (ParseException e) {
             LOGGER.error("Cannot parse the date, wrong format", e);
         }
+
+        return dateTextField;
     }
 
     public void addMaskedField(int gridx, int gridy, int gridwidth) {
