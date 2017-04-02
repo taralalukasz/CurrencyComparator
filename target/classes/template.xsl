@@ -9,21 +9,21 @@
                     }
 
                     #wrapper {
-                        width: 700px;
-                        <!--border: 1px solid black;-->
-                        position:absolute;
-                        left:0; right:0;
-                        top:0; bottom:0;
-                        margin:auto;
+                    width: 700px;
+                    <!--border: 1px solid black;-->
+                    position:absolute;
+                    left:0; right:0;
+                    top:0; bottom:0;
+                    margin:auto;
                     }
                     #inner {
-                        width: 300px;
-                        float:left; /* add this */
-                        border: 1px solid red;
+                    width: 300px;
+                    float:left; /* add this */
+                    border: 1px solid red;
                     }
 
                     h1 {
-                        text-align: center;
+                    text-align: center;
                     }
 
                 </style>
@@ -39,9 +39,10 @@
                             <table>
                             </table>
                         </div>
-                     </xsl:for-each>
+                    </xsl:for-each>
                 </div>
             </body>
         </html>
     </xsl:template>
 </xsl:stylesheet>
+

@@ -7,7 +7,7 @@ import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import java.text.ParseException;
 
-import static xml.XmlFacade.LOGGER;
+import static xml.XMLManager.LOGGER;
 
 /**
  * Created by Lukasz on 30.03.2017.
@@ -32,7 +32,7 @@ public class ComponentBuilder {
         return checkBox;
     }
 
-    public void addComboBox(int gridx, int gridy) {
+    public JComboBox<String> addComboBox(int gridx, int gridy) {
         GridBagConstraints c = new GridBagConstraints(); //ograniczenia guzikow
 
         c.gridx = gridx;
@@ -43,6 +43,8 @@ public class ComponentBuilder {
         comboBox.setSelectedIndex(4);
         //comboBox.addActionListener(this);
         frame.add(comboBox, c);
+
+        return comboBox;
     }
 
     public void addLabel(String labelText, int placement, double weighty) {

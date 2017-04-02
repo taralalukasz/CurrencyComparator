@@ -18,35 +18,16 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.List;
+import java.util.Scanner;
 
 
-
-
-    /**
+/**
      * Created by Lukasz on 06.03.2017.
      */
-    public class XmlFacade {
+    public class XMLManager {
 
-       public static Logger LOGGER = LogManager.getLogger("xml response");
-
-
-    public static String modifyJsonToXml (JSONObject json) throws JSONException {
-        StringBuilder sb = new StringBuilder();
-        sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-        sb.append("\n");
-        sb.append("<?xml-stylesheet type=\"text/xsl\" version=\"1.0\" href=\"transform.xsl\"?>");
-        sb.append("\n");
-        sb.append("<currency>");
-        sb.append("\n");
-        sb.append(XML.toString(json));
-        sb.append("\n");
-        sb.append("</currency>");
-        String xmlfile = sb.toString();
-
-        xmlfile = xmlfile.replace("><", ">\n<");
-
-        return xmlfile;
-    }
+        public static Logger LOGGER = LogManager.getLogger("xml response");
 
         public static String modifyJsonToXml (JSONObject json1, JSONObject json2) throws JSONException {
             StringBuilder sb = new StringBuilder();
@@ -119,10 +100,10 @@ import java.nio.charset.Charset;
         return response;
     }
 
-    public static void saveXmlToFile(String xmlInString) throws IOException, TransformerException, ParserConfigurationException, SAXException {
+    public static void saveXmlToFile(String xmlInString, String filename) throws IOException, TransformerException, ParserConfigurationException, SAXException {
 
         try {
-            BufferedWriter out = new BufferedWriter(new FileWriter("src/main/resources/response.xml"));
+            BufferedWriter out = new BufferedWriter(new FileWriter("src/main/resources/" + filename));
             out.write(xmlInString);
             out.close();
         } catch (IOException e) {
@@ -151,6 +132,69 @@ import java.nio.charset.Charset;
         String xmlString = sw.toString();
         // print xml
         System.out.println("Here's the xml:\n\n" + xmlString);
+    }
 
+    public void createXMLFiles(String firstDate, String secondDate, String base ,List<String> checkBoxList) throws IOException, JSONException {
+        String reposnseString = "";
+        try {
+            JSONObject json1 = readJsonFromUrl("http://api.fixer.io/" + firstDate + "?base=" + base);
+            JSONObject json2 = readJsonFromUrl("http://api.fixer.io/" + secondDate + "?base=" + base);
+
+            System.out.println("\n");
+            reposnseString = modifyJsonToXml(json1, json2);
+
+            saveXmlToFile(reposnseString, "response.xml");
+
+            chooseGivenCurrencies(checkBoxList);
+
+        } catch (Exception e) {
+            LOGGER.error("unable to save XML to file", e);
+        }
+    }
+
+    private void chooseGivenCurrencies(List<String> checkBoxList) {
+        File file =new File("src/main/resources/template.xsl");
+        Scanner in;
+        String transformBody = "";
+            try {
+                in = new Scanner(file);
+                while(in.hasNext())
+                {
+                    String line=in.nextLine();
+                    transformBody += line;
+                    transformBody += "\n";
+
+                    if(line.contains("<table>")) {
+                        transformBody += "                                <tr>\n" +
+                                "                                    <th>currency</th>\n" +
+                                "                                    <th>value</th>\n" +
+                                "                                    <th>abbreviation</th>\n" +
+                                "                                </tr>\n";
+
+                        for (String checkboxValue : checkBoxList) {
+                            transformBody += "                                <tr>\n" +
+                                    "                                    <td>" + checkboxValue + "</td>\n" +
+                                    "                                    <td><xsl:value-of select=\"rates/" + checkboxValue + "\"/></td>\n" +
+                                    "                                    <td>" + checkboxValue + "</td>\n" +
+                                    "                                </tr>\n";
+                        }
+                    }
+                }
+
+                saveXmlToFile(transformBody, "transform.xsl");
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                LOGGER.error("File transform.xml not found", e);
+            } catch (TransformerException e) {
+                e.printStackTrace();
+            } catch (SAXException e) {
+                e.printStackTrace();
+            } catch (ParserConfigurationException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        System.out.println("gowno");
     }
 }
