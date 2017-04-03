@@ -9,21 +9,21 @@
                     }
 
                     #wrapper {
-                        width: 700px;
-                        <!--border: 1px solid black;-->
-                        position:absolute;
-                        left:0; right:0;
-                        top:0; bottom:0;
-                        margin:auto;
+                    width: 700px;
+                    <!--border: 1px solid black;-->
+                    position:absolute;
+                    left:0; right:0;
+                    top:0; bottom:0;
+                    margin:auto;
                     }
                     #inner {
-                        width: 300px;
-                        float:left; /* add this */
-                        border: 1px solid red;
+                    width: 300px;
+                    float:left; /* add this */
+                    border: 1px solid red;
                     }
 
                     h1 {
-                        text-align: center;
+                    text-align: center;
                     }
 
                 </style>
@@ -37,9 +37,34 @@
                             <h2>Base currency : <xsl:value-of select="base"/></h2>
                             <h3>Evaluation date : <xsl:value-of select="date"/></h3>
                             <table>
+                                <tr>
+                                    <th>currency</th>
+                                    <th>value</th>
+                                    <th>abbreviation</th>
+                                </tr>
+                                <tr>
+                                    <td>AUD</td>
+                                    <td><xsl:value-of select="rates/AUD"/></td>
+                                    <td>AUD</td>
+                                </tr>
+                                <tr>
+                                    <td>CHF</td>
+                                    <td><xsl:value-of select="rates/CHF"/></td>
+                                    <td>CHF</td>
+                                </tr>
+                                <tr>
+                                    <td>EUR</td>
+                                    <td><xsl:value-of select="rates/EUR"/></td>
+                                    <td>EUR</td>
+                                </tr>
+                                <tr>
+                                    <td>RUB</td>
+                                    <td><xsl:value-of select="rates/RUB"/></td>
+                                    <td>RUB</td>
+                                </tr>
                             </table>
                         </div>
-                     </xsl:for-each>
+                    </xsl:for-each>
                 </div>
             </body>
         </html>

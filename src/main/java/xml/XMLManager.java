@@ -2,7 +2,6 @@ package xml;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.apache.log4j.spi.LoggerFactory;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.XML;
@@ -15,6 +14,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.Charset;
@@ -145,14 +145,14 @@ import java.util.Scanner;
 
             saveXmlToFile(reposnseString, "response.xml");
 
-            chooseGivenCurrencies(checkBoxList);
+            generateXsltTransformFile(checkBoxList);
 
         } catch (Exception e) {
             LOGGER.error("unable to save XML to file", e);
         }
     }
 
-    private void chooseGivenCurrencies(List<String> checkBoxList) {
+    private void generateXsltTransformFile(List<String> checkBoxList) {
         File file =new File("src/main/resources/template.xsl");
         Scanner in;
         String transformBody = "";
@@ -194,7 +194,19 @@ import java.util.Scanner;
             } catch (IOException e) {
                 e.printStackTrace();
             }
+    }
 
-        System.out.println("gowno");
+    public void transformXmlToHtml(String responseSource, String transformSource) {
+        try {
+             TransformerFactory tFactory = TransformerFactory.newInstance();
+
+             Transformer transformer = tFactory.newTransformer(new StreamSource("src/main/resources/transform.xsl"));
+
+             transformer.transform  (new javax.xml.transform.stream.StreamSource("src/main/resources/transform.xsl" ),
+                     new StreamResult( new FileOutputStream("src/main/resources/output.html")));
+        }
+        catch (Exception e) {
+            e.printStackTrace( );
+        }
     }
 }

@@ -83,6 +83,8 @@ public class Main extends JFrame implements ActionListener{
                 LOGGER.info("Date exception : " , e3);
             }
 
+            xmlManager.transformXmlToHtml("src/main/resources/transform.xsl", "src/main/resources/transform.xsl");
+
             this.dateField1.setText("");
             this.dateField2.setText("");
         } else if (name.equalsIgnoreCase("exit")) {
