@@ -202,7 +202,7 @@ import java.util.Scanner;
 
              Transformer transformer = tFactory.newTransformer(new StreamSource("src/main/resources/transform.xsl"));
 
-             transformer.transform  (new javax.xml.transform.stream.StreamSource("src/main/resources/transform.xsl" ),
+             transformer.transform  (new javax.xml.transform.stream.StreamSource("src/main/resources/response.xml" ),
                      new StreamResult( new FileOutputStream("src/main/resources/output.html")));
         }
         catch (Exception e) {
