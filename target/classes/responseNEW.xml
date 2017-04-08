@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" version="1.0" href="transform.xsl"?>
 <comparator>
-<currencies>
-<date>2012-12-12</date>
-<rates>
+    <currencies>
+        <date>2012-12-12</date>
+        <rates>
 			<currency type="CHF">0.290</currency>
 			<currency type="HRK">1.830</currency>
 			<currency type="MXN">4.050</currency>
@@ -37,12 +37,12 @@
 			<currency type="SEK">2.100</currency>
 			<currency type="NZD">0.370</currency>
 			<currency type="BRL">0.660</currency>
-</rates>
-<base>PLN</base>
-</currencies>
-<currencies>
-<date>2010-10-08</date>
-<rates>
+        </rates>
+        <base>PLN</base>
+    </currencies>
+    <currencies>
+        <date>2010-10-08</date>
+        <rates>
 			<currency type="CHF">0.330</currency>
 			<currency type="HRK">1.840</currency>
 			<currency type="MXN">4.380</currency>
@@ -76,7 +76,7 @@
 			<currency type="SEK">2.340</currency>
 			<currency type="NZD">0.460</currency>
 			<currency type="BRL">0.580</currency>
-</rates>
-<base>PLN</base>
-</currencies>
+        </rates>
+        <base>PLN</base>
+    </currencies>
 </comparator>

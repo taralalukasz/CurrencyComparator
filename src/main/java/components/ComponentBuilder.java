@@ -159,6 +159,23 @@ public class ComponentBuilder {
         frame.add(button, c);
     }
 
+    public JButton addCompareButton(String buttonCommand, int gridx, int gridy) {
+        JButton button = new JButton("Compare"); //create a button
+        button.setActionCommand(buttonCommand);
+        button.addActionListener(frame);
+
+        GridBagConstraints c = new GridBagConstraints(); //ograniczenia guzikow
+
+        c.gridx = gridx;
+        c.gridy = gridy;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridwidth = 3;
+
+        frame.add(button, c);
+
+        return button;
+    }
+
 
     public void createMenuBar() {
         //jmenubar

@@ -33,7 +33,7 @@ import java.util.Scanner;
 
         public static Logger LOGGER = LogManager.getLogger("xml response");
 
-        public static String modifyJsonToXml (JSONObject json1, JSONObject json2) throws JSONException {
+        public String modifyJsonToXml (JSONObject json1, JSONObject json2) throws JSONException {
             StringBuilder sb = new StringBuilder();
             sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
             sb.append("\n");
@@ -58,6 +58,72 @@ import java.util.Scanner;
             return xmlfile;
         }
 
+        public void changeXmlParametersToAttributes(String sourceFile, String targetFile) throws FileNotFoundException {
+            String[] separatedTransformedXml = readFile(sourceFile).split("\n");
+            try {
+                for(int i = 0; i < separatedTransformedXml.length; i++) {
+                    if (separatedTransformedXml[i].contains("<rates>")) {
+                        for (int j = i + 1; j < separatedTransformedXml.length; j++) {
+                            if (separatedTransformedXml[j].contains("</rates>")) {
+                                break;
+                            } else {
+                                separatedTransformedXml[j] = replaceCurrencyFormat(separatedTransformedXml[j]);
+                            }
+                        }
+                    }
+                }
+
+                saveXmlAsArrayToFile(separatedTransformedXml, targetFile);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    private void saveXmlAsArrayToFile(String[] xmlAsArray, String targetFile) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(targetFile));
+
+        for (String line : xmlAsArray) {
+            writer.write(line + "");
+            writer.newLine();
+        }
+
+        writer.flush();
+        writer.close();
+    }
+
+    private String replaceCurrencyFormat(String oldFormat) {
+        // old format is   <CHF>0.29556</CHF>
+        StringBuilder sb = new StringBuilder();
+        String currency = oldFormat.replaceAll("\\s+","").substring(1, 4);
+        String value = oldFormat.replaceAll("\\s+","").substring(5,9);
+        value += "0";
+
+        sb.append("\t\t\t<currency");
+        sb.append(" type=\"" + currency + "\">");
+        sb.append(value);
+        sb.append("</currency>");
+
+        return sb.toString();
+    }
+
+    private String readFile(String sourceFile) throws FileNotFoundException {
+        StringBuilder sb = new StringBuilder();
+        BufferedReader reader = new BufferedReader(new FileReader(sourceFile));
+        String readFileContent = "";
+        try {
+            String line = reader.readLine();
+            while (line != null) {
+                sb.append(line + "\n");
+                line = reader.readLine();
+            }
+
+            readFileContent = sb.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return readFileContent;
+    }
+
     private static String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
         int cp;
@@ -80,30 +146,6 @@ import java.util.Scanner;
     }
 
 
-    public static String readXml(String url) throws ParserConfigurationException {
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder db = dbf.newDocumentBuilder();
-        String response = "";
-        try {
-            Document doc = db.parse(new URL(url).openStream());
-
-
-            DOMSource domSource = new DOMSource(doc);
-            StringWriter writer = new StringWriter();
-            StreamResult result = new StreamResult(writer);
-            TransformerFactory tf = TransformerFactory.newInstance();
-            Transformer transformer = tf.newTransformer();
-            transformer.transform(domSource, result);
-
-            System.out.println("XML IN String format is: \n" + writer.toString());
-
-            response = writer.toString();
-        } catch (Exception e) {
-            LOGGER.error("reading  XML failed with exception : " + e);
-        }
-        return response;
-    }
-
     public static void saveXmlToFile(String xmlInString, String filename) throws IOException, TransformerException, ParserConfigurationException, SAXException {
 
         try {
@@ -115,7 +157,7 @@ import java.util.Scanner;
         }
     }
 
-    public void createXMLFiles(String firstDate, String secondDate, String base ,List<String> checkBoxList) throws IOException, JSONException {
+    public void createXMLFiles(String firstDate, String secondDate, String base) throws IOException, JSONException {
         String reposnseString = "";
         try {
             JSONObject json1 = readJsonFromUrl("http://api.fixer.io/" + firstDate + "?base=" + base);
@@ -126,7 +168,9 @@ import java.util.Scanner;
 
             saveXmlToFile(reposnseString, "response.xml");
 
-            generateXsltTransformFile(checkBoxList);
+            changeXmlParametersToAttributes("src/main/resources/response.xml", "src/main/resources/response.xml");
+
+
 
         } catch (Exception e) {
             LOGGER.error("unable to save XML to file", e);
@@ -149,14 +193,12 @@ import java.util.Scanner;
                         transformBody += "                                <tr>\n" +
                                 "                                    <th>currency</th>\n" +
                                 "                                    <th>value</th>\n" +
-                                "                                    <th>abbreviation</th>\n" +
                                 "                                </tr>\n";
 
                         for (String checkboxValue : checkBoxList) {
                             transformBody += "                                <tr>\n" +
                                     "                                    <td>" + checkboxValue + "</td>\n" +
-                                    "                                    <td><xsl:value-of select=\"rates/" + checkboxValue + "\"/></td>\n" +
-                                    "                                    <td>" + checkboxValue + "</td>\n" +
+                                    "                                    <td><xsl:value-of select=\"rates/@" + checkboxValue + "\"/></td>\n" +
                                     "                                </tr>\n";
                         }
                     }
@@ -185,7 +227,7 @@ import java.util.Scanner;
         }
     }
 
-    public void validateXmlWithXsd() {
+    public boolean validateXmlWithXsd() {
         File schemaFile = new File("src/main/resources/validate.xsd");
         Source xmlFile = new StreamSource(new File("src/main/resources/response.xml"));
         SchemaFactory schemaFactory = SchemaFactory
@@ -196,10 +238,14 @@ import java.util.Scanner;
 
             validator.validate(xmlFile);
             System.out.println(xmlFile.getSystemId() + " is valid");
+
+            return true;
         } catch (SAXException e) {
             System.out.println(xmlFile.getSystemId() + " is NOT valid reason:" + e);
+            return false;
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
     }
 }

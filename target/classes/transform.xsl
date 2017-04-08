@@ -38,30 +38,10 @@
                             <h3>Evaluation date : <xsl:value-of select="date"/></h3>
                             <table>
                                 <tr>
-                                    <th>currency</th>
-                                    <th>value</th>
-                                    <th>abbreviation</th>
+                                    <td><xsl:value-of select="rates/currency/@type"/></td>
+                                    <td><xsl:value-of select="rates/currency"/></td>
                                 </tr>
-                                <tr>
-                                    <td>CZK</td>
-                                    <td><xsl:value-of select="rates/CZK"/></td>
-                                    <td>CZK</td>
-                                </tr>
-                                <tr>
-                                    <td>HUF</td>
-                                    <td><xsl:value-of select="rates/HUF"/></td>
-                                    <td>HUF</td>
-                                </tr>
-                                <tr>
-                                    <td>GBP</td>
-                                    <td><xsl:value-of select="rates/GBP"/></td>
-                                    <td>GBP</td>
-                                </tr>
-                                <tr>
-                                    <td>JPY</td>
-                                    <td><xsl:value-of select="rates/JPY"/></td>
-                                    <td>JPY</td>
-                                </tr>
+
                             </table>
                         </div>
                     </xsl:for-each>
