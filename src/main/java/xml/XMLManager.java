@@ -8,6 +8,7 @@ import org.json.XML;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -15,6 +16,9 @@ import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.Charset;
@@ -111,29 +115,6 @@ import java.util.Scanner;
         }
     }
 
-    public static void indentXml(String sourceFile) throws TransformerException, ParserConfigurationException, IOException, SAXException {
-        // Output the XML
-        // set up a transformer
-        DocumentBuilderFactory dbfac = DocumentBuilderFactory.newInstance();
-        DocumentBuilder docBuilder = dbfac.newDocumentBuilder();
-        File xmlFile = new File(sourceFile);
-        Document doc = docBuilder.parse(xmlFile);
-
-
-        TransformerFactory transfac = TransformerFactory.newInstance();
-        Transformer trans = transfac.newTransformer();
-        trans.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
-        trans.setOutputProperty(OutputKeys.INDENT, "yes");
-        // create string from xml tree
-        StringWriter sw = new StringWriter();
-        StreamResult result = new StreamResult(sw);
-        DOMSource source = new DOMSource(doc);
-        trans.transform(source, result);
-        String xmlString = sw.toString();
-        // print xml
-        System.out.println("Here's the xml:\n\n" + xmlString);
-    }
-
     public void createXMLFiles(String firstDate, String secondDate, String base ,List<String> checkBoxList) throws IOException, JSONException {
         String reposnseString = "";
         try {
@@ -185,13 +166,7 @@ import java.util.Scanner;
             } catch (FileNotFoundException e) {
                 // TODO Auto-generated catch block
                 LOGGER.error("File transform.xml not found", e);
-            } catch (TransformerException e) {
-                e.printStackTrace();
-            } catch (SAXException e) {
-                e.printStackTrace();
-            } catch (ParserConfigurationException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
     }
@@ -200,13 +175,31 @@ import java.util.Scanner;
         try {
              TransformerFactory tFactory = TransformerFactory.newInstance();
 
-             Transformer transformer = tFactory.newTransformer(new StreamSource("src/main/resources/transform.xsl"));
+             Transformer transformer = tFactory.newTransformer(new StreamSource(transformSource));
 
-             transformer.transform  (new javax.xml.transform.stream.StreamSource("src/main/resources/response.xml" ),
+             transformer.transform  (new javax.xml.transform.stream.StreamSource(responseSource ),
                      new StreamResult( new FileOutputStream("src/main/resources/output.html")));
         }
         catch (Exception e) {
             e.printStackTrace( );
+        }
+    }
+
+    public void validateXmlWithXsd() {
+        File schemaFile = new File("src/main/resources/validate.xsd");
+        Source xmlFile = new StreamSource(new File("src/main/resources/response.xml"));
+        SchemaFactory schemaFactory = SchemaFactory
+                .newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+        try {
+            Schema schema = schemaFactory.newSchema(schemaFile);
+            Validator validator = schema.newValidator();
+
+            validator.validate(xmlFile);
+            System.out.println(xmlFile.getSystemId() + " is valid");
+        } catch (SAXException e) {
+            System.out.println(xmlFile.getSystemId() + " is NOT valid reason:" + e);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

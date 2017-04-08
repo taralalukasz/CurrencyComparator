@@ -43,11 +43,6 @@
                                     <th>abbreviation</th>
                                 </tr>
                                 <tr>
-                                    <td>SEK</td>
-                                    <td><xsl:value-of select="rates/SEK"/></td>
-                                    <td>SEK</td>
-                                </tr>
-                                <tr>
                                     <td>CZK</td>
                                     <td><xsl:value-of select="rates/CZK"/></td>
                                     <td>CZK</td>
@@ -63,19 +58,9 @@
                                     <td>GBP</td>
                                 </tr>
                                 <tr>
-                                    <td>AUD</td>
-                                    <td><xsl:value-of select="rates/AUD"/></td>
-                                    <td>AUD</td>
-                                </tr>
-                                <tr>
-                                    <td>CHF</td>
-                                    <td><xsl:value-of select="rates/CHF"/></td>
-                                    <td>CHF</td>
-                                </tr>
-                                <tr>
-                                    <td>EUR</td>
-                                    <td><xsl:value-of select="rates/EUR"/></td>
-                                    <td>EUR</td>
+                                    <td>JPY</td>
+                                    <td><xsl:value-of select="rates/JPY"/></td>
+                                    <td>JPY</td>
                                 </tr>
                             </table>
                         </div>

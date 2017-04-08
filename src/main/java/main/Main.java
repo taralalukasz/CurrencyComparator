@@ -65,26 +65,26 @@ public class Main extends JFrame implements ActionListener{
         String name = e.getActionCommand();
 
         if (name.equalsIgnoreCase("send")) {
-            List<String> checkBoxList = checkBoxManager.getAllCheckedBoxes();
-
-            try {
-                if (!dateField1.getText().matches("\\d{4}-\\d{2}-\\d{2}") || !dateField2.getText().matches("\\d{4}-\\d{2}-\\d{2}")) {
-                    throw new Exception("Date 1 or date 2 is not filled!");
-                }
-
-                String chosenBaseCurrency = String.valueOf(baseCurrency.getSelectedItem());
-
-                xmlManager.createXMLFiles(dateField1.getText(), dateField2.getText(), chosenBaseCurrency, checkBoxList);
-            } catch (IOException e1) {
-                LOGGER.error("Problem with inpout file or sth related to this", e1);
-            } catch (JSONException e2) {
-                LOGGER.error("Json exception, check what happened there", e2);
-            } catch (Exception e3) {
-                LOGGER.info("Date exception : " , e3);
-            }
-
-            xmlManager.transformXmlToHtml("src/main/resources/transform.xsl", "src/main/resources/transform.xsl");
-
+//            List<String> checkBoxList = checkBoxManager.getAllCheckedBoxes();
+//
+//            try {
+//                if (!dateField1.getText().matches("\\d{4}-\\d{2}-\\d{2}") || !dateField2.getText().matches("\\d{4}-\\d{2}-\\d{2}")) {
+//                    throw new Exception("Date 1 or date 2 is not filled!");
+//                }
+//
+//                String chosenBaseCurrency = String.valueOf(baseCurrency.getSelectedItem());
+//
+//                xmlManager.createXMLFiles(dateField1.getText(), dateField2.getText(), chosenBaseCurrency, checkBoxList);
+//            } catch (IOException e1) {
+//                LOGGER.error("Problem with inpout file or sth related to this", e1);
+//            } catch (JSONException e2) {
+//                LOGGER.error("Json exception, check what happened there", e2);
+//            } catch (Exception e3) {
+//                LOGGER.info("Date exception : " , e3);
+//            }
+//
+//            xmlManager.transformXmlToHtml("src/main/resources/response.xml", "src/main/resources/transform.xsl");
+          //  xmlManager.validateXmlWithXsd();
             this.dateField1.setText("");
             this.dateField2.setText("");
         } else if (name.equalsIgnoreCase("exit")) {

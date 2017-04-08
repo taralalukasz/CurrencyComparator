@@ -1,82 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" version="1.0" href="transform.xsl"?>
 <comparator>
-<currencies>
-<date>2010-10-08</date>
-<rates>
-<HRK>5.4525</HRK>
-<MXN>12.991</MXN>
-<LVL>0.52839</LVL>
-<LTL>2.5729</LTL>
-<ZAR>7.1528</ZAR>
-<INR>45.928</INR>
-<CNY>6.8963</CNY>
-<THB>31.08</THB>
-<AUD>1.062</AUD>
-<KRW>1166.9</KRW>
-<JPY>85.104</JPY>
-<PLN>2.9631</PLN>
-<GBP>0.65209</GBP>
-<IDR>9234.7</IDR>
-<HUF>205.33</HUF>
-<PHP>44.954</PHP>
-<TRY>1.4741</TRY>
-<RUB>30.993</RUB>
-<HKD>8.0209</HKD>
-<EUR>0.74516</EUR>
-<DKK>5.556</DKK>
-<CAD>1.0557</CAD>
-<MYR>3.2206</MYR>
-<USD>1.0338</USD>
-<BGN>1.4574</BGN>
-<EEK>11.659</EEK>
-<NOK>6.0358</NOK>
-<RON>3.1776</RON>
-<SGD>1.356</SGD>
-<CZK>18.249</CZK>
-<SEK>6.9426</SEK>
-<NZD>1.3858</NZD>
-<BRL>1.7432</BRL>
-</rates>
-<base>CHF</base>
-</currencies>
-<currencies>
-<date>2010-10-08</date>
-<rates>
-<HRK>5.4525</HRK>
-<MXN>12.991</MXN>
-<LVL>0.52839</LVL>
-<LTL>2.5729</LTL>
-<ZAR>7.1528</ZAR>
-<INR>45.928</INR>
-<CNY>6.8963</CNY>
-<THB>31.08</THB>
-<AUD>1.062</AUD>
-<KRW>1166.9</KRW>
-<JPY>85.104</JPY>
-<PLN>2.9631</PLN>
-<GBP>0.65209</GBP>
-<IDR>9234.7</IDR>
-<HUF>205.33</HUF>
-<PHP>44.954</PHP>
-<TRY>1.4741</TRY>
-<RUB>30.993</RUB>
-<HKD>8.0209</HKD>
-<EUR>0.74516</EUR>
-<DKK>5.556</DKK>
-<CAD>1.0557</CAD>
-<MYR>3.2206</MYR>
-<USD>1.0338</USD>
-<BGN>1.4574</BGN>
-<EEK>11.659</EEK>
-<NOK>6.0358</NOK>
-<RON>3.1776</RON>
-<SGD>1.356</SGD>
-<CZK>18.249</CZK>
-<SEK>6.9426</SEK>
-<NZD>1.3858</NZD>
-<BRL>1.7432</BRL>
-</rates>
-<base>CHF</base>
-</currencies>
+    <currencies>
+        <date>blabla</date>
+        <rates>
+        <CHF>0.29556</CHF>
+        </rates>
+        <base>PLN</base>
+    </currencies>
+
+    <currencies>
+        <date>blabla</date>
+        <rates>
+        <CHF>0.29556</CHF>
+        </rates>
+        <base>PLN</base>
+    </currencies>
 </comparator>
