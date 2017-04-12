@@ -1,5 +1,6 @@
 package main;
 
+import java.io.File;
 import components.CheckBoxManager;
 import components.ComponentBuilder;
 
@@ -38,6 +39,7 @@ public class Main extends JFrame implements ActionListener{
     List<JCheckBox> checkboxList = new ArrayList<JCheckBox>();
 
     JButton compare;
+    JButton saveToHtml;
 
     public static void main(String[] args) throws IOException, JSONException {
 
@@ -58,6 +60,7 @@ public class Main extends JFrame implements ActionListener{
 
         createComponents(this.builder);
         compare.setEnabled(false);
+        saveToHtml.setEnabled(false);
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -76,7 +79,9 @@ public class Main extends JFrame implements ActionListener{
                 xmlManager.createXMLFiles(dateField1.getText(), dateField2.getText(), chosenBaseCurrency);
 
                 if (!xmlManager.validateXmlWithXsd()) {
-                    showMessageDialog(null, "xml is not valid", "InfoBox: " + "error", JOptionPane.INFORMATION_MESSAGE);
+                    showMessageDialog(null, "Xml is not valid \n" +
+                            "Sometimes the provided courses are not precise enough \n " +
+                            "Please choose another dates.", "InfoBox: " + "error", JOptionPane.INFORMATION_MESSAGE);
                     this.revalidate();
                     this.repaint();
                     return;
@@ -84,12 +89,8 @@ public class Main extends JFrame implements ActionListener{
 
                 compare.setEnabled(true);
                 updateLayout();
-
-
                 //teraz musi iść :
-                    //po wyborze walut TWORZE NOWY XML Z WALUTAMI WYBRANYMI
                     //w jakis sposob WYSWIETLAM GO W JAVIE
-                    //potwierdzam poprawnosc, zapisuje do html
 
             } catch (IOException e1) {
                 LOGGER.error("Problem with inpout file or sth related to this", e1);
@@ -99,13 +100,21 @@ public class Main extends JFrame implements ActionListener{
                 LOGGER.info("Date exception : " , e3);
             }
 
+//            this.dateField1.setText("");
+//            this.dateField2.setText("");
 
-            //transform xml to html and save (wymaga odpowiedniego przygotowania xls
-//            xmlManager.transformXmlToHtml("src/main/resources/response.xml", "src/main/resources/transform.xsl");
-
-            this.dateField1.setText("");
-            this.dateField2.setText("");
-
+        } else if (name.equals("compare")) {
+            xmlManager.generateXsltTransformFile(checkBoxManager.getAllCheckedBoxes());
+            saveToHtml.setEnabled(true);
+            File htmlFile = new File("src/main/resources/response.xml");
+            try {
+                Desktop.getDesktop().browse(htmlFile.toURI());
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        } else if (name.equals("save")) {
+            xmlManager.transformXmlToHtml("src/main/resources/response.xml", "src/main/resources/transform.xsl");
+            showMessageDialog(null, "Results saved to HTML", "InfoBox: " + "error", JOptionPane.INFORMATION_MESSAGE);
         } else if (name.equalsIgnoreCase("exit")) {
             System.out.println("closed");
             System.exit(0);            //TO SLUZY TO DO WYCHODZENIA Z PROGRAMU
@@ -147,7 +156,8 @@ public class Main extends JFrame implements ActionListener{
 
         builder.addConfirmButton("Confirm Dates", "send", 0, 9);
         compare = builder.addCompareButton("compare", 0, 10);
-        builder.addConfirmButton("Exit", "exit", 0, 11);
+        builder.addConfirmButton("Exit", "exit", 0, 12);
+        saveToHtml = builder.addCompareButton("Save results", "save", 0, 11);
     }
 }
 

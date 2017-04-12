@@ -4,79 +4,79 @@
 <currencies>
 <date>2012-12-12</date>
 <rates>
-			<currency type="CHF">0.290</currency>
-			<currency type="HRK">1.830</currency>
-			<currency type="MXN">4.050</currency>
-			<currency type="LVL">0.160</currency>
-			<currency type="LTL">0.840</currency>
-			<currency type="ZAR">2.760</currency>
-			<currency type="INR">17.20</currency>
-			<currency type="CNY">1.980</currency>
-			<currency type="THB">9.740</currency>
-			<currency type="AUD">0.300</currency>
-			<currency type="ILS">1.200</currency>
-			<currency type="KRW">341.0</currency>
-			<currency type="JPY">26.30</currency>
-			<currency type="GBP">0.190</currency>
-			<currency type="IDR">30650</currency>
-			<currency type="HUF">68.90</currency>
-			<currency type="PHP">13.00</currency>
-			<currency type="TRY">0.560</currency>
-			<currency type="RUB">9.750</currency>
-			<currency type="HKD">2.460</currency>
-			<currency type="EUR">0.240</currency>
-			<currency type="DKK">1.820</currency>
-			<currency type="CAD">0.310</currency>
-			<currency type="MYR">0.970</currency>
-			<currency type="USD">0.310</currency>
-			<currency type="BGN">0.470</currency>
-			<currency type="NOK">1.780</currency>
-			<currency type="RON">1.100</currency>
-			<currency type="SGD">0.380</currency>
-			<currency type="CZK">6.160</currency>
-			<currency type="SEK">2.100</currency>
-			<currency type="NZD">0.370</currency>
-			<currency type="BRL">0.660</currency>
+			<currency type="CHF">0.350</currency>
+			<currency type="HRK">2.170</currency>
+			<currency type="MXN">4.810</currency>
+			<currency type="LVL">0.200</currency>
+			<currency type="ZAR">3.270</currency>
+			<currency type="INR">20.40</currency>
+			<currency type="CNY">2.350</currency>
+			<currency type="THB">11.50</currency>
+			<currency type="AUD">0.350</currency>
+			<currency type="ILS">1.420</currency>
+			<currency type="KRW">405.0</currency>
+			<currency type="JPY">31.30</currency>
+			<currency type="PLN">1.180</currency>
+			<currency type="GBP">0.230</currency>
+			<currency type="IDR">36370</currency>
+			<currency type="HUF">81.70</currency>
+			<currency type="PHP">15.40</currency>
+			<currency type="TRY">0.670</currency>
+			<currency type="RUB">11.50</currency>
+			<currency type="HKD">2.920</currency>
+			<currency type="EUR">0.280</currency>
+			<currency type="DKK">2.160</currency>
+			<currency type="CAD">0.370</currency>
+			<currency type="MYR">1.150</currency>
+			<currency type="USD">0.370</currency>
+			<currency type="BGN">0.560</currency>
+			<currency type="NOK">2.120</currency>
+			<currency type="RON">1.310</currency>
+			<currency type="SGD">0.460</currency>
+			<currency type="CZK">7.310</currency>
+			<currency type="SEK">2.490</currency>
+			<currency type="NZD">0.440</currency>
+			<currency type="BRL">0.780</currency>
 </rates>
-<base>PLN</base>
+<base>LTL</base>
 </currencies>
 <currencies>
 <date>2010-10-08</date>
 <rates>
-			<currency type="CHF">0.330</currency>
-			<currency type="HRK">1.840</currency>
-			<currency type="MXN">4.380</currency>
-			<currency type="LVL">0.170</currency>
-			<currency type="LTL">0.860</currency>
-			<currency type="ZAR">2.410</currency>
-			<currency type="INR">15.50</currency>
-			<currency type="CNY">2.320</currency>
-			<currency type="THB">10.40</currency>
-			<currency type="AUD">0.350</currency>
-			<currency type="KRW">393.0</currency>
-			<currency type="JPY">28.70</currency>
-			<currency type="GBP">0.220</currency>
-			<currency type="IDR">31160</currency>
-			<currency type="HUF">69.20</currency>
-			<currency type="PHP">15.10</currency>
-			<currency type="TRY">0.490</currency>
-			<currency type="RUB">10.40</currency>
-			<currency type="HKD">2.700</currency>
-			<currency type="EUR">0.250</currency>
-			<currency type="DKK">1.870</currency>
-			<currency type="CAD">0.350</currency>
-			<currency type="MYR">1.080</currency>
-			<currency type="USD">0.340</currency>
-			<currency type="BGN">0.490</currency>
-			<currency type="EEK">3.930</currency>
-			<currency type="NOK">2.030</currency>
-			<currency type="RON">1.070</currency>
-			<currency type="SGD">0.450</currency>
-			<currency type="CZK">6.150</currency>
-			<currency type="SEK">2.340</currency>
-			<currency type="NZD">0.460</currency>
-			<currency type="BRL">0.580</currency>
+			<currency type="CHF">0.380</currency>
+			<currency type="HRK">2.110</currency>
+			<currency type="MXN">5.040</currency>
+			<currency type="LVL">0.200</currency>
+			<currency type="ZAR">2.780</currency>
+			<currency type="INR">17.80</currency>
+			<currency type="CNY">2.680</currency>
+			<currency type="THB">12.00</currency>
+			<currency type="AUD">0.410</currency>
+			<currency type="KRW">453.0</currency>
+			<currency type="JPY">33.00</currency>
+			<currency type="PLN">1.150</currency>
+			<currency type="GBP">0.250</currency>
+			<currency type="IDR">35890</currency>
+			<currency type="HUF">79.80</currency>
+			<currency type="PHP">17.40</currency>
+			<currency type="TRY">0.570</currency>
+			<currency type="RUB">12.00</currency>
+			<currency type="HKD">3.110</currency>
+			<currency type="EUR">0.280</currency>
+			<currency type="DKK">2.150</currency>
+			<currency type="CAD">0.410</currency>
+			<currency type="MYR">1.250</currency>
+			<currency type="USD">0.400</currency>
+			<currency type="BGN">0.560</currency>
+			<currency type="EEK">4.530</currency>
+			<currency type="NOK">2.340</currency>
+			<currency type="RON">1.230</currency>
+			<currency type="SGD">0.520</currency>
+			<currency type="CZK">7.090</currency>
+			<currency type="SEK">2.690</currency>
+			<currency type="NZD">0.530</currency>
+			<currency type="BRL">0.670</currency>
 </rates>
-<base>PLN</base>
+<base>LTL</base>
 </currencies>
 </comparator>

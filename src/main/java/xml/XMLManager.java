@@ -177,7 +177,7 @@ import java.util.Scanner;
         }
     }
 
-    private void generateXsltTransformFile(List<String> checkBoxList) {
+    public void generateXsltTransformFile(List<String> checkBoxList) {
         File file =new File("src/main/resources/template.xsl");
         Scanner in;
         String transformBody = "";
@@ -198,7 +198,7 @@ import java.util.Scanner;
                         for (String checkboxValue : checkBoxList) {
                             transformBody += "                                <tr>\n" +
                                     "                                    <td>" + checkboxValue + "</td>\n" +
-                                    "                                    <td><xsl:value-of select=\"rates/@" + checkboxValue + "\"/></td>\n" +
+                                    "                                    <td><xsl:value-of select=\"/comparator/currencies/rates/currency[@type='" + checkboxValue + "']\"/></td>\n" +
                                     "                                </tr>\n";
                         }
                     }

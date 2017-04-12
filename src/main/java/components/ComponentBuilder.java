@@ -38,7 +38,7 @@ public class ComponentBuilder {
         c.gridx = gridx;
         c.gridy = gridy;
 
-        String[] currencies = {"SEK", "CZK", "HUF", "GBP", "PLN", "JPY", "AUD", "CHF", "EUD" , "RUB"};
+        String[] currencies = {"CHF","HRK","MXN","LVL","LTL","ZAR","INR","CNY","THB","AUD","KRW","JPY","GBP","IDR","HUF","PHP","TRY","RUB","HKD","EUR","DKK","CAD","MYR","USD","BGN","EEK","NOK","RON","SGD","CZK","SEK","NZD","BRL"};
         JComboBox<String> comboBox = new JComboBox<String>(currencies);
         comboBox.setSelectedIndex(4);
         //comboBox.addActionListener(this);
@@ -161,6 +161,23 @@ public class ComponentBuilder {
 
     public JButton addCompareButton(String buttonCommand, int gridx, int gridy) {
         JButton button = new JButton("Compare"); //create a button
+        button.setActionCommand(buttonCommand);
+        button.addActionListener(frame);
+
+        GridBagConstraints c = new GridBagConstraints(); //ograniczenia guzikow
+
+        c.gridx = gridx;
+        c.gridy = gridy;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridwidth = 3;
+
+        frame.add(button, c);
+
+        return button;
+    }
+
+    public JButton addCompareButton(String buttonName, String buttonCommand, int gridx, int gridy) {
+        JButton button = new JButton(buttonName); //create a button
         button.setActionCommand(buttonCommand);
         button.addActionListener(frame);
 
