@@ -42,33 +42,34 @@
                                     <th>value</th>
                                 </tr>
                                 <tr>
-                                    <td>MXN</td>
-                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='MXN']"/></td>
-                                </tr>
-                                <tr>
-                                    <td>LTL</td>
-                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='LTL']"/></td>
-                                </tr>
-                                <tr>
-                                    <td>ZAR</td>
-                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='ZAR']"/></td>
-                                </tr>
-                                <tr>
-                                    <td>INR</td>
-                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='INR']"/></td>
-                                </tr>
-                                <tr>
                                     <td>CNY</td>
                                     <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='CNY']"/></td>
                                 </tr>
                                 <tr>
-                                    <td>MYR</td>
-                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='MYR']"/></td>
+                                    <td>JPY</td>
+                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='JPY']"/></td>
                                 </tr>
                                 <tr>
-                                    <td>USD</td>
-                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='USD']"/></td>
+                                    <td>GBP</td>
+                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='GBP']"/></td>
                                 </tr>
+                                <tr>
+                                    <td>RUB</td>
+                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='RUB']"/></td>
+                                </tr>
+                                <tr>
+                                    <td>HKD</td>
+                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='HKD']"/></td>
+                                </tr>
+                                <tr>
+                                    <td>EUR</td>
+                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='EUR']"/></td>
+                                </tr>
+                                <tr>
+                                    <td>CAD</td>
+                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='CAD']"/></td>
+                                </tr>
+
                             </table>
                         </div>
                     </xsl:for-each>

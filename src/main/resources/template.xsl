@@ -37,6 +37,7 @@
                             <h2>Base currency : <xsl:value-of select="base"/></h2>
                             <h3>Evaluation date : <xsl:value-of select="date"/></h3>
                             <table>
+
                             </table>
                         </div>
                     </xsl:for-each>

@@ -54,8 +54,8 @@
                                     <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='LVL']"/></td>
                                 </tr>
                                 <tr>
-                                    <td>LTL</td>
-                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='LTL']"/></td>
+                                    <td>JPY</td>
+                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='JPY']"/></td>
                                 </tr>
                                 <tr>
                                     <td>GBP</td>
