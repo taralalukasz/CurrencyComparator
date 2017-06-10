@@ -39,23 +39,27 @@
                     <xsl:for-each select="comparator/currencies">
                         <div id="inner">
                             <h2>Base currency : <xsl:value-of select="base"/></h2>
-                            <h3>Evaluation date : <xsl:value-of select="date"/></h3>
+                            <h5>Evaluation date : <xsl:value-of select="date"/></h5>
                             <table class="table table-striped">
                                 <tr>
                                     <th>currency</th>
                                     <th>value</th>
                                 </tr>
                                 <tr>
-                                    <td>KRW</td>
-                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='KRW']"/></td>
+                                    <td>AUD</td>
+                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='AUD']"/></td>
                                 </tr>
                                 <tr>
-                                    <td>JPY</td>
-                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='JPY']"/></td>
+                                    <td>USD</td>
+                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='USD']"/></td>
                                 </tr>
                                 <tr>
-                                    <td>GBP</td>
-                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='GBP']"/></td>
+                                    <td>CZK</td>
+                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='CZK']"/></td>
+                                </tr>
+                                <tr>
+                                    <td>NZD</td>
+                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='NZD']"/></td>
                                 </tr>
 
                             </table>

@@ -23,8 +23,7 @@
                     }
                     #inner {
                     width: 300px;
-                    float:left; /* add this */
-                    border: 1px solid red;
+                    float:left;
                     }
 
                     h1 {
@@ -40,7 +39,7 @@
                     <xsl:for-each select="comparator/currencies">
                         <div id="inner">
                             <h2>Base currency : <xsl:value-of select="base"/></h2>
-                            <h3>Evaluation date : <xsl:value-of select="date"/></h3>
+                            <h5>Evaluation date : <xsl:value-of select="date"/></h5>
                             <table class="table table-striped">
 
                             </table>
