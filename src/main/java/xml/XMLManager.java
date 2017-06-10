@@ -189,7 +189,7 @@ import java.util.Scanner;
                     transformBody += line;
                     transformBody += "\n";
 
-                    if(line.contains("<table>")) {
+                    if(line.contains("<table class=\"table table-striped\">")) {
                         transformBody += "                                <tr>\n" +
                                 "                                    <th>currency</th>\n" +
                                 "                                    <th>value</th>\n" +
@@ -206,7 +206,7 @@ import java.util.Scanner;
 
                 saveXmlToFile(transformBody, "transform.xsl");
             } catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
+
                 LOGGER.error("File transform.xml not found", e);
             } catch (Exception e) {
                 e.printStackTrace();

@@ -3,6 +3,11 @@
     <xsl:template match="/">
         <html>
             <head>
+                <meta charset="utf-8"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                 <style>
                     table, th, td {
                     border: 1px solid black;
@@ -36,7 +41,8 @@
                         <div id="inner">
                             <h2>Base currency : <xsl:value-of select="base"/></h2>
                             <h3>Evaluation date : <xsl:value-of select="date"/></h3>
-                            <table>
+                            <table class="table table-striped">
+
                             </table>
                         </div>
                     </xsl:for-each>

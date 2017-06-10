@@ -3,6 +3,11 @@
     <xsl:template match="/">
         <html>
             <head>
+                <meta charset="utf-8"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                 <style>
                     table, th, td {
                     border: 1px solid black;
@@ -18,8 +23,7 @@
                     }
                     #inner {
                     width: 300px;
-                    float:left; /* add this */
-                    border: 1px solid red;
+                    float:left;
                     }
 
                     h1 {
@@ -36,22 +40,14 @@
                         <div id="inner">
                             <h2>Base currency : <xsl:value-of select="base"/></h2>
                             <h3>Evaluation date : <xsl:value-of select="date"/></h3>
-                            <table>
+                            <table class="table table-striped">
                                 <tr>
                                     <th>currency</th>
                                     <th>value</th>
                                 </tr>
                                 <tr>
-                                    <td>HRK</td>
-                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='HRK']"/></td>
-                                </tr>
-                                <tr>
-                                    <td>MXN</td>
-                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='MXN']"/></td>
-                                </tr>
-                                <tr>
-                                    <td>LVL</td>
-                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='LVL']"/></td>
+                                    <td>KRW</td>
+                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='KRW']"/></td>
                                 </tr>
                                 <tr>
                                     <td>JPY</td>
@@ -61,26 +57,7 @@
                                     <td>GBP</td>
                                     <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='GBP']"/></td>
                                 </tr>
-                                <tr>
-                                    <td>IDR</td>
-                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='IDR']"/></td>
-                                </tr>
-                                <tr>
-                                    <td>HUF</td>
-                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='HUF']"/></td>
-                                </tr>
-                                <tr>
-                                    <td>TRY</td>
-                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='TRY']"/></td>
-                                </tr>
-                                <tr>
-                                    <td>RUB</td>
-                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='RUB']"/></td>
-                                </tr>
-                                <tr>
-                                    <td>NOK</td>
-                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='NOK']"/></td>
-                                </tr>
+
                             </table>
                         </div>
                     </xsl:for-each>

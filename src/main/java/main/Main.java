@@ -89,8 +89,7 @@ public class Main extends JFrame implements ActionListener{
 
                 compare.setEnabled(true);
                 updateLayout();
-                //teraz musi iść :
-                    //w jakis sposob WYSWIETLAM GO W JAVIE
+
 
             } catch (IOException e1) {
                 LOGGER.error("Problem with inpout file or sth related to this", e1);
@@ -108,13 +107,13 @@ public class Main extends JFrame implements ActionListener{
             saveToHtml.setEnabled(true);
             File htmlFile = new File("src/main/resources/response.xml");
             try {
-                Desktop.getDesktop().browse(htmlFile.toURI());
+                Desktop.getDesktop().open(htmlFile);
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
         } else if (name.equals("save")) {
             xmlManager.transformXmlToHtml("src/main/resources/response.xml", "src/main/resources/transform.xsl");
-            showMessageDialog(null, "Results saved to HTML", "InfoBox: " + "error", JOptionPane.INFORMATION_MESSAGE);
+            showMessageDialog(null, "Results saved to HTML", "InfoBox", JOptionPane.INFORMATION_MESSAGE);
         } else if (name.equalsIgnoreCase("exit")) {
             System.out.println("closed");
             System.exit(0);            //TO SLUZY TO DO WYCHODZENIA Z PROGRAMU

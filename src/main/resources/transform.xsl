@@ -3,6 +3,11 @@
     <xsl:template match="/">
         <html>
             <head>
+                <meta charset="utf-8"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                 <style>
                     table, th, td {
                     border: 1px solid black;
@@ -18,8 +23,7 @@
                     }
                     #inner {
                     width: 300px;
-                    float:left; /* add this */
-                    border: 1px solid red;
+                    float:left;
                     }
 
                     h1 {
@@ -35,39 +39,27 @@
                     <xsl:for-each select="comparator/currencies">
                         <div id="inner">
                             <h2>Base currency : <xsl:value-of select="base"/></h2>
-                            <h3>Evaluation date : <xsl:value-of select="date"/></h3>
-                            <table>
+                            <h5>Evaluation date : <xsl:value-of select="date"/></h5>
+                            <table class="table table-striped">
                                 <tr>
                                     <th>currency</th>
                                     <th>value</th>
                                 </tr>
                                 <tr>
-                                    <td>CNY</td>
-                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='CNY']"/></td>
+                                    <td>AUD</td>
+                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='AUD']"/></td>
                                 </tr>
                                 <tr>
-                                    <td>JPY</td>
-                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='JPY']"/></td>
+                                    <td>USD</td>
+                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='USD']"/></td>
                                 </tr>
                                 <tr>
-                                    <td>GBP</td>
-                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='GBP']"/></td>
+                                    <td>CZK</td>
+                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='CZK']"/></td>
                                 </tr>
                                 <tr>
-                                    <td>RUB</td>
-                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='RUB']"/></td>
-                                </tr>
-                                <tr>
-                                    <td>HKD</td>
-                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='HKD']"/></td>
-                                </tr>
-                                <tr>
-                                    <td>EUR</td>
-                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='EUR']"/></td>
-                                </tr>
-                                <tr>
-                                    <td>CAD</td>
-                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='CAD']"/></td>
+                                    <td>NZD</td>
+                                    <td><xsl:value-of select="/comparator/currencies/rates/currency[@type='NZD']"/></td>
                                 </tr>
 
                             </table>
